@@ -121,3 +121,9 @@ class IvationDriver(ClockDriver):
             self._setSegmentByIndex(self.oneHourIndices[segment], val)
         if digit == 'tenHour':
             self._setSegmentByIndex(self.tenHourIndices[segment], val)
+
+    def setSymbol(self, symbol, val):
+        if symbol == 'minuteSecondColon':
+            self._setSegmentByIndex(23, val)
+        elif symbol == 'hourMinuteColon':
+            self._setSegmentByIndex(31, val)

@@ -2,6 +2,7 @@
 import time
 import datetime
 from ClockDriver import ClockDriver
+from Ivation import IvationDriver
 
 class ClockController(object):
     def __init__(self):
@@ -32,6 +33,9 @@ class ClockController(object):
             return [1, 1, 1, 1, 0, 1, 1]
         else:
             return [0, 0, 0, 0, 0, 0, 1]
+        
+    def clear(self):
+        self.clockDriver.clear()
 
     def setDigit(self, digit, val):
         segs = self.digitToSevenSeg(val)
@@ -54,12 +58,13 @@ class ClockController(object):
 
 if __name__ == "__main__":
     this = ClockController()
+    this.clockDriver = IvationDriver()
     while True:
         this.clear()
-        this.setSegment(23, True)
-        this.setSegment(31, True)
+        this.clockDriver.setSymbol('minuteSecondColon', True)
+        this.clockDriver.setSymbol('hourMinuteColon', True)
         this.setTime()
-        this.output()
+        this.clockDriver.writeOutputs()
 
         #We want to sleep until just after the next second
         now = datetime.datetime.now()

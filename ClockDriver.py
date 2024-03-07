@@ -10,5 +10,8 @@ class ClockDriver(object):
     def setSegment(self, digit, segment, val):
         pass
 
+    def setSymbol(self, symbol, val):
+        pass
+
     def writeOutputs(self):
         pass
